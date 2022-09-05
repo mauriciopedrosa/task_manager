@@ -1,0 +1,24 @@
+{% extends 'app_tareas/plantilla_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+<div class='container'>
+    <h2>Tareas</h2>
+    <form action="" class="formulario_tareas" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                {{ form | crispy}}
+            </div>     
+        </div>   
+        <br>
+        <button type="submit" , id="btnEnviar", class="btn btn-primary btn-sm">Agregar</button>
+        <a href="{% url 'tareas' %}" class="btn btn-primary btn-sm">Volver</a>           
+    </form>
+
+</div>
+
+{{mensaje}}
+
+{% endblock contenido %}

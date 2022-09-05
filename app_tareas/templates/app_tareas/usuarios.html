@@ -1,0 +1,44 @@
+{% extends 'app_tareas/plantilla_base.html' %}
+
+{% block contenido %}
+
+<div class = 'container'>
+    <h2>USUARIOS</h2>
+    <a href="{% url 'crear_usuarios' %}" class="btn btn-primary btn-sm">Agregar</a>
+
+</div>
+<br>
+
+<div class="container">
+
+    <form action="" method="GET">
+        <input type="text" name="buscar">
+        <input type="submit" value="Buscar en Nombre" class="btn btn-dark btn-sm">
+    </form>
+</div>
+<br>
+<div class ='container'>
+    <div class = 'row'>
+        <div class = 'col'>
+            <table class = 'table  table-hover table-responsive-sm'>
+            
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in usuario %}
+                    <tr>
+                        <td>{{i.nombre}}</td> 
+                        <td>{{i.email}}</td>
+                    </tr>    
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

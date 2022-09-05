@@ -1,0 +1,17 @@
+{% extends 'app_tareas/plantilla_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+<h2>Usuarios</h2>
+<form action="" class="formulario_usuarios" method="POST">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <br>
+    <button type="submit" , id="btnEnviar", class="btn btn-primary btn-sm">Agregar</button>
+    <a href="{% url 'usuarios' %}" class="btn btn-primary btn-sm">Volver</a>  
+
+</form>
+{{mensaje}}
+
+{% endblock contenido %}

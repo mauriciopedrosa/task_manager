@@ -1,0 +1,17 @@
+{% extends 'app_tareas/plantilla_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+
+<h1>Ingresar</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <br>
+    <input type="submit" value="Ingresar">
+
+</form>
+
+{% endblock contenido %}

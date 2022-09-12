@@ -1,0 +1,17 @@
+{% extends 'app_tareas/plantilla_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+<div class='container'>
+    <h2>Tareas</h2>
+    <form action="" class="formulario_tareas" method="POST">
+        {% csrf_token %}
+        <p>se va a eliminar la tarea: "{{tarea}}"</p>
+        <button type="submit" , id="btnEnviar", class="btn btn-primary btn-sm">Eliminar</button>
+        <a href="{% url 'tareas' %}" class="btn btn-primary btn-sm">Volver</a>           
+    </form>
+
+</div>
+
+{% endblock contenido %}

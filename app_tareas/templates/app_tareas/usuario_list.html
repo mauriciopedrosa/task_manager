@@ -4,7 +4,7 @@
 
 <div class = 'container'>
     <h2>USUARIOS</h2>
-    <a href="{% url 'crear_usuarios' %}" class="btn btn-primary btn-sm">Agregar</a>
+    <a href="{% url 'crear_usuario' %}" class="btn btn-primary btn-sm">Agregar</a>
 
 </div>
 <br>
@@ -26,13 +26,18 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Email</th>
+                        <th></th>
+         
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in usuario %}
+                    {% for i in usuarios %}
                     <tr>
                         <td>{{i.nombre}}</td> 
                         <td>{{i.email}}</td>
+                        <td><a href="{% url 'usuario' i.id %}" class="btn btn-info btn-sm">Detalle</a>
+                        <a href="{% url 'editar_usuario' i.id %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'eliminar_usuario' i.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>                             
                     </tr>    
                     {% endfor %}
                 </tbody>

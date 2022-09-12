@@ -1,1 +1,14 @@
 {% extends 'app_tareas/plantilla_base.html' %}
+
+{% block contenido %}
+
+{% if request.user.is_authenticated %}
+    <p>{{request.user}}</p>
+    <a href="{% url 'logout' %}">Salir</a>
+
+{% else %}
+    <a href="{% url 'login' %}">Ingresar</a>    
+
+{% endif %}  
+
+{% endblock %}

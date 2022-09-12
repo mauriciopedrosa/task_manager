@@ -3,14 +3,13 @@
 
 {% block contenido %}
 
-<h2>Usuarios</h2>
-<form action="" class="formulario_usuarios" method="POST">
+<h2>Agregar Categoria</h2>
+<form action="" class="formulario_categorias" method="POST">
     {% csrf_token %}
     {{ form | crispy }}
     <br>
     <button type="submit" , id="btnEnviar", class="btn btn-primary btn-sm">Agregar</button>
-    <a href="{% url 'usuarios' %}" class="btn btn-primary btn-sm">Volver</a>  
-
+    <a href="{% url 'categorias' %}" class="btn btn-primary btn-sm">Volver</a>  
 </form>
 {{mensaje}}
 

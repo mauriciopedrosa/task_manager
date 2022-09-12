@@ -1,85 +1,116 @@
+from multiprocessing import context
 from .models import Categoria, Tarea, Usuario
 from django.shortcuts import render
-from .forms import CategoriasForm, TareasForm, UsuariosForm
-from django.db.models import Q
+# a trabajar las vistas por Clase:
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
  
  
 def home(request):
     return render(request, 'app_tareas/home.html') 
+
+class Logueo(LoginView):
+    field = '__all__'
+    redirect_authenticated_user: True
+    
+    def get_success_url(self):
+        return reverse_lazy('home')
+    
+    
+## ------------ VISTAS TAREAS ----------- 
+
+class ListaTareas(LoginRequiredMixin, ListView):
+    
+    model = Tarea
+    context_object_name = 'tareas'
+    
+    
+class DetalleTarea(LoginRequiredMixin,DetailView):
+    
+    model = Tarea
+    context_object_name = 'tarea'
+    
+class CrearTarea(LoginRequiredMixin,CreateView):
+    
+    model = Tarea
+    fields = '__all__'
+    success_url = reverse_lazy('tareas')
+
+class EditarTarea(LoginRequiredMixin,UpdateView):
+    
+    model = Tarea
+    fields = '__all__'
+    success_url = reverse_lazy('tareas')
+    
+class EliminarTarea(LoginRequiredMixin,DeleteView):
+    
+    model = Tarea
+    context_object_name = 'tarea'
+    success_url = reverse_lazy('tareas')    
+    
+    
+ # ---------- VISTAS USUARIOS -------------
  
-## ------------ VISTAS DE LISTA DE DATOS ----------- 
+class ListaUsuarios(LoginRequiredMixin,ListView):
+    
+    model = Usuario
+    context_object_name = 'usuarios'   
+    
+class DetalleUsuario(LoginRequiredMixin,DetailView):
+    
+    model = Usuario
+    context_object_name = 'usuario'
+    
+class CrearUsuario(LoginRequiredMixin,CreateView):
+    
+    model = Usuario
+    fields = '__all__'
+    success_url = reverse_lazy('usuarios')
+
+class EditarUsuario(LoginRequiredMixin,UpdateView):
+    
+    model = Usuario
+    fields = '__all__'
+    success_url = reverse_lazy('usuarios')
+    
+class EliminarUsuario(LoginRequiredMixin,DeleteView):
+    
+    model = Usuario
+    context_object_name = 'usuario'
+    success_url = reverse_lazy('usuarios')        
+    
+# ---------- VISTAS CATEGORIAS -------------
  
-def tareas(request): 
-    queryset = request.GET.get("buscar")   # veo si fue utilizado el buscar para filtrar
+class ListaCategorias(LoginRequiredMixin,ListView):
     
-    lista_tareas = Tarea.objects.all()     # traigo todas las tareas 
-    if queryset:                           # si queryset vino con datos filtro la lista 
-        lista_tareas = Tarea.objects.filter(
-            Q(titulo__icontains = queryset)  
-        )
-    return render(request, "app_tareas/tareas.html", {'tarea': lista_tareas})
-
-def categorias(request):
-    queryset = request.GET.get("buscar")     
-
-    lista_categorias = Categoria.objects.all()
-    if queryset:                            
-        lista_categorias = Categoria.objects.filter(
-            Q(descripcion__icontains = queryset)  
-        )    
-    return render(request, "app_tareas/categorias.html", {'categoria': lista_categorias})
-  
-
-def usuarios(request):
-    queryset = request.GET.get("buscar")     
+    model = Categoria
+    context_object_name = 'categorias'   
     
-    lista_usuarios = Usuario.objects.all()    
-    if queryset:                           
-        lista_usuarios = Usuario.objects.filter(
-            Q(nombre__icontains = queryset)  
-        )        
-    return render(request, "app_tareas/usuarios.html", {'usuario': lista_usuarios})
-  
-## ------------ VISTAS FORM CREACION ----------- 
-
-def crear_tarea(request):
-    data = {'form': TareasForm()} 
+class DetalleCategoria(LoginRequiredMixin,DetailView):
     
-    if request.method == 'POST':
-        formulario = TareasForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            data["mensaje"] = "Tarea Creada"
-        else:
-            data["form"] = formulario
-    return render(request, "app_tareas/form_tareas.html", data)
-  
-
-def crear_categoria(request):
-    data = {'form': CategoriasForm()}
+    model = Categoria
+    context_object_name = 'categoria'
     
-    if request.method == 'POST':
-        formulario = CategoriasForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            data["mensaje"] = "Categoria Creada"
-        else:
-            data["form"] = formulario
-    return render(request, "app_tareas/form_categorias.html", data)
-
-
-def crear_usuario(request):
-    data = {'form': UsuariosForm()}
+class CrearCategoria(LoginRequiredMixin,CreateView):
     
-    if request.method == 'POST':
-        formulario = UsuariosForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            data["mensaje"] = "Usuario Creado"
-        else:
-            data["form"] = formulario
-    return render(request, "app_tareas/form_usuarios.html", data)
+    model = Categoria
+    fields = '__all__'
+    success_url = reverse_lazy('categorias')
 
-
-##### ----------------- VISTAS DE BUSQUEDA ---------------------
-
+class EditarCategoria(LoginRequiredMixin,UpdateView):
+    
+    model = Categoria
+    fields = '__all__'
+    success_url = reverse_lazy('categorias')
+    
+class EliminarCategoria(LoginRequiredMixin,DeleteView):
+    
+    model = Categoria
+    context_object_name = 'categoria'
+    success_url = reverse_lazy('categorias')        
+        
+ 

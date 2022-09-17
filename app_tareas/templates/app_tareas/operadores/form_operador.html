@@ -4,8 +4,8 @@
 {% block contenido %}
 
 <div class='container'>
-    <h2>Usuarios</h2>
-    <form action="" class="formulario_usuarios" method="POST">
+    <h2>Operadores</h2>
+    <form action="" class="formulario_operadores" method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col">
@@ -14,7 +14,7 @@
         </div>   
         <br>
         <button type="submit" , id="btnEnviar", class="btn btn-primary btn-sm">Agregar</button>
-        <a href="{% url 'usuarios' %}" class="btn btn-primary btn-sm">Volver</a>           
+        <a href="{% url 'operadores' %}" class="btn btn-primary btn-sm">Volver</a>           
     </form>
 
 </div>

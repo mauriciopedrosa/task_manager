@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, CrearCategoria, CrearUsuario, DetalleCategoria, DetalleUsuario, EditarCategoria, EditarUsuario, EliminarCategoria, EliminarUsuario, ListaCategorias, ListaUsuarios,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo
+from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -12,12 +12,12 @@ urlpatterns = [
     path('crear_tarea/', CrearTarea.as_view(), name ='crear_tarea'),
     path('editar_tarea/<int:pk>', EditarTarea.as_view(), name ='editar_tarea'),
     path('eliminar_tarea/<int:pk>', EliminarTarea.as_view(), name ='eliminar_tarea'), 
-    #---------- USUARIOS -----------
-    path('usuarios/', ListaUsuarios.as_view(), name ='usuarios'),       
-    path('usuario/<int:pk>', DetalleUsuario.as_view(), name ='usuario'),           
-    path('crear_usuario/', CrearUsuario.as_view(), name ='crear_usuario'),
-    path('editar_usuario/<int:pk>', EditarUsuario.as_view(), name ='editar_usuario'),
-    path('eliminar_usuario/<int:pk>', EliminarUsuario.as_view(), name ='eliminar_usuario'), 
+    #---------- OPERADORES -----------
+    path('operadores/', ListaOperadores.as_view(), name ='operadores'),       
+    path('operador/<int:pk>', DetalleOperador.as_view(), name ='operador'),           
+    path('crear_operador/', CrearOperador.as_view(), name ='crear_operador'),
+    path('editar_operador/<int:pk>', EditarOperador.as_view(), name ='editar_operador'),
+    path('eliminar_operador/<int:pk>', EliminarOperador.as_view(), name ='eliminar_operador'), 
     #---------- CATEGORIAS -----------
     path('categorias/', ListaCategorias.as_view(), name ='categorias'),       
     path('categoria/<int:pk>', DetalleCategoria.as_view(), name ='categoria'),           

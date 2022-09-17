@@ -26,15 +26,17 @@
                     <tr>
                         <th>Descripcion</th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for i in categorias %}
                     <tr>
                         <td>{{i.descripcion}}</td> 
-                        <td><a href="{% url 'categoria' i.id %}" class="btn btn-info btn-sm">Detalle</a>
-                        <a href="{% url 'editar_categoria' i.id %}" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="{% url 'eliminar_categoria' i.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>                           
+                        <td><a href="{% url 'categoria' i.id %}" class="btn btn-info btn-sm">Detalle</a></td> 
+                        <td><a href="{% url 'editar_categoria' i.id %}" class="btn btn-warning btn-sm">Editar</a></td> 
+                        <td><a href="{% url 'eliminar_categoria' i.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>                           
                     </tr>    
                     {% endfor %}
                 </tbody>

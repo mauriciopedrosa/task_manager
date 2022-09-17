@@ -1,0 +1,61 @@
+{% extends 'app_tareas/plantilla_base.html' %}
+
+
+{% block contenido %}
+
+
+
+<div class = 'container'>
+    <h2>TAREAS PENDIENTES DE: {{usuario}}</h2>
+    <a href="{% url 'crear_tarea' %}" class="btn btn-primary btn-sm">Agregar</a>
+</div>
+<br>
+<div class="container">
+
+    <form action="" method="GET">
+        <input type="text" name="buscar">
+        <input type="submit" value="Buscar en Titulo" class="btn btn-dark btn-sm">
+    </form>
+</div>
+<br>
+<div class ='container'>
+    <div class = 'row'>
+        <div class = 'col-12'>
+            <!-- <div class="card">
+                <div class="card-body">             -->
+                    <table class = 'table  table-hover table-responsive-sm table-sm'>
+            
+                        <thead class='thead-dark'>
+                            <tr>
+                                <th>Titulo</th>
+                                <th>Fecha</th>
+                                <th>Usuario</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in tareas %}
+                            <tr>
+                                <td>{{i.titulo}}</td> <!--  TR Table DATA -->
+                                <td>{{i.creado}}</td>
+                                <td>{{i.usuario}}</td>
+                                <td><a href="{% url 'tarea' i.id %}" class="btn btn-info btn-sm">Detalle</a></td>
+                                <td><a href="{% url 'editar_tarea' i.id %}" class="btn btn-warning btn-sm">Editar</a></td>
+                                <td><a href="{% url 'eliminar_tarea' i.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>     
+                                                    
+                            </tr>    
+                            {% empty %}
+                            <h3> No hay elementos en esta lista </h3>                    
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                <!-- </div>
+            </div>     -->
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}

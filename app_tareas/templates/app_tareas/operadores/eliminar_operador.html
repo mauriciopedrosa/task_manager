@@ -4,12 +4,12 @@
 {% block contenido %}
 
 <div class='container'>
-    <h2>Usuarios</h2>
-    <form action="" class="formulario_tareas" method="POST">
+    <h2>Operadores</h2>
+    <form action="" class="formulario_operador" method="POST">
         {% csrf_token %}
-        <p>se va a eliminar el usuario: "{{usuario}}"</p>
+        <p>se va a eliminar el Operador: "{{operador}}"</p>
         <button type="submit" , id="btnEnviar", class="btn btn-primary btn-sm">Eliminar</button>
-        <a href="{% url 'usuarios' %}" class="btn btn-primary btn-sm">Volver</a>           
+        <a href="{% url 'operadores' %}" class="btn btn-primary btn-sm">Volver</a>           
     </form>
 
 </div>

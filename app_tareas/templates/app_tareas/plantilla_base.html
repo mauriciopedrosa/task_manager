@@ -24,13 +24,23 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'operadores' %}">OPERADORES</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}">CATEGORIAS</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'tareas' %}">TAREAS</a></li>
-
+                        <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'registro' %}">REGISTRARSE</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
         <section style="padding:80px;">
+            <!-- si hay mensages enviados los recorro y muestro -->
+
+            {% if messages %}
+            {% for m in messages %}
+            <div class="alert alert-primary" role="alert">
+                {{m}}
+            </div>
+            {% endfor %}
+    
+            {% endif %} 
             {% block contenido %}
             {% endblock contenido %}
         </section>
@@ -44,5 +54,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+
     </body>
 </html>

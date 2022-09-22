@@ -3,15 +3,28 @@
 
 {% block contenido %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Registrarse</h1>
 
-<h1>Registrarse</h1>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <br>
+                        <input type="submit" value="Registrar" class="btn btn-success float-right">
+                        <br>
+                        <a href="{% url 'home' %}">Volver a inicio</a> |
+                        <a href="{% url 'login' %}">Iniciar Sesion</a>                        
+                        
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form | crispy }}
-    <br>
-    <input type="submit" value="Registrar">
-
-</form>
+                    </form>
+                </div>    
+            </div> 
+        </div> 
+    </div> 
+</div> 
 
 {% endblock contenido %}

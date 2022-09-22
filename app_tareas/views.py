@@ -1,10 +1,19 @@
 from .models import Categoria, Operador, Tarea
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import  messages # el storage de messages esta definido en settings
+
 # a trabajar las vistas por Clase:
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.urls import reverse_lazy
+
+# vistas para login y seguridad
+# importo de FORMS el custom que realice de userregisterform y se lo envio a la vista con el data
+from app_tareas.forms import CustomUserRegisterForm
+from django.contrib.auth.forms import AuthenticationForm
+# funciones que me van a permitir autenticar al usuario
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
  
@@ -12,12 +21,41 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def home(request):
     return render(request, 'app_tareas/home.html') 
 
+## ------------ VISTAS REGISTRACION ---------------
+
+def registro(request):
+    data = {
+        'form':CustomUserRegisterForm()
+    }
+    
+    if request.method == 'POST':
+        formulario = CustomUserRegisterForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username = formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Registro Correcto.")
+            return redirect(to='home')
+        
+    return render(request, 'registration/registro.html', data)
+    
+     
+
 class Logueo(LoginView):
     field = '__all__'
     redirect_authenticated_user: True
     
     def get_success_url(self):
         return reverse_lazy('home')
+    
+## -------------VISTA USUARIOS --------------    
+    
+class Crear_usuario(LoginRequiredMixin,CreateView):
+    
+    model = Tarea
+    fields = '__all__'
+    success_url = reverse_lazy('tareas')
+    template_name = 'app_tareas/tareas/form_tarea.html'      
     
     
 ## ------------ VISTAS TAREAS ----------- 
@@ -128,4 +166,3 @@ class EliminarCategoria(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('categorias')      
     template_name = 'app_tareas/categorias/eliminar_categoria.html'        
         
- 

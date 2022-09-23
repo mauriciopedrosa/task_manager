@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 
 #### Usuario del sistema ADMIN ######
@@ -18,12 +20,12 @@ class Categoria(models.Model):
         return self.descripcion
     
 class Tarea(models.Model):
-    usuario = models.ForeignKey(Operador,null=False, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=200)
-    descripcion = models.TextField()
+    usuario = models.ForeignKey(User,null=False, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=200,null=False)
+    descripcion = models.TextField(null=False)
     completo = models.BooleanField(default=False)
     creado = models.DateTimeField(auto_now_add=True)
-    categoria = models.ForeignKey(Categoria,null=False,on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria,null=False,on_delete=models.PROTECT)
     
 
     def __str__(self):

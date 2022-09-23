@@ -48,15 +48,7 @@ class Logueo(LoginView):
     def get_success_url(self):
         return reverse_lazy('home')
     
-## -------------VISTA USUARIOS --------------    
-    
-class Crear_usuario(LoginRequiredMixin,CreateView):
-    
-    model = Tarea
-    fields = '__all__'
-    success_url = reverse_lazy('tareas')
-    template_name = 'app_tareas/tareas/form_tarea.html'      
-    
+  
     
 ## ------------ VISTAS TAREAS ----------- 
 

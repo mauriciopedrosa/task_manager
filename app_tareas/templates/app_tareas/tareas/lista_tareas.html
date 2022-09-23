@@ -30,6 +30,8 @@
                                 <th>Titulo</th>
                                 <th>Fecha</th>
                                 <th>Usuario</th>
+                                {% comment %} <th>Descripcion</th> {% endcomment %}
+                                <th>Categoria</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -37,8 +39,11 @@
                             {% for i in tareas %}
                             <tr>
                                 <td>{{i.titulo}}</td> <!--  TR Table DATA -->
-                                <td>{{i.creado}}</td>
+                                <td>{{i.creado|date:"d/m/y"}}</td>
                                 <td>{{i.usuario}}</td>
+                                {% comment %} <td>{{i.descripcion}}</td>                                 {% endcomment %}
+                                <td>{{i.categoria}}</td>
+
                                 <td><a href="{% url 'tarea' i.id %}" class="btn btn-info btn-sm">Detalle</a>
                                 <a href="{% url 'editar_tarea' i.id %}" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="{% url 'eliminar_tarea' i.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>     

@@ -16,6 +16,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
  
  
 def home(request):
@@ -85,7 +86,13 @@ class EliminarTarea(LoginRequiredMixin,DeleteView):
     context_object_name = 'tarea'
     success_url = reverse_lazy('tareas')   
     template_name = 'app_tareas/tareas/eliminar_tarea.html'       
-     
+
+
+def tarea(request, usuario_id):
+    user = User.objects.filter(id = usuario_id)
+    tareas = Tarea.objects.filter(usuario_id = user[0])
+    return render(request, "app_tareas/tareas/tarea_usuario.html", {'tareas': tareas, 'empleado': user[0]})
+ 
     
     
  # ---------- VISTAS OPERADORES -------------

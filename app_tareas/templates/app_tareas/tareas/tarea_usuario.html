@@ -1,12 +1,19 @@
 {% extends 'app_tareas/plantilla_base.html' %}
 
+{% block style_block %}
+<style>
 
+.completo {
+    font-size: 50px;
+}
+</style>
+{% endblock style_block %}
 {% block contenido %}
 
 
 
 <div class = 'container'>
-    <h2>TAREAS PENDIENTES DE: {{usuario}}</h2>
+    <h2>TAREAS PENDIENTES DE: {{empleado}}</h2>
     <a href="{% url 'crear_tarea' %}" class="btn btn-primary btn-sm">Agregar</a>
 </div>
 <br>
@@ -32,23 +39,28 @@
                                 <th>Usuario</th>
                                 {% comment %} <th>Descripcion</th> {% endcomment %}
                                 <th>Categoria</th>
-                                <th></th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for i in tareas %}
-                            <tr>
+                            <tr class="completo">
                                 <td>{{i.titulo}}</td> <!--  TR Table DATA -->
                                 <td>{{i.creado|date:"d/m/y"}}</td>
-                                <td><a href="{% url 'tarea_usuario' i.usuario_id %}" class="btn btn-success btn-sm">{{i.usuario}}</a></td>
+                                <td><a href="" class="btn btn-success btn-sm">{{i.usuario}}</a></td>
                                 {% comment %} <td>{{i.descripcion}}</td>                                 {% endcomment %}
                                 <td>{{i.categoria}}</td>
-
+                                {% if i.completo %}
+                                <td><p class="btn btn-success btn-sm">{{i.completo}}</p></td>
+                                {% else %}
+                                <td><p class="btn btn-danger btn-sm">{{i.completo}}</p></td>
+                                {% endif %}
                                 <td><a href="{% url 'tarea' i.id %}" class="btn btn-info btn-sm">Detalle</a>
                                 <a href="{% url 'editar_tarea' i.id %}" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="{% url 'eliminar_tarea' i.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>     
                                                     
-                            </tr>    
+                            </tr>
+                            
                             {% empty %}
                             <h3> No hay elementos en esta lista </h3>                    
                             {% endfor %}

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 {% extends 'app_tareas/plantilla_base.html' %}
 
 {% block contenido %}
@@ -7,8 +9,14 @@
     <a href="{% url 'logout' %}">Salir</a>
 
 {% else %}
-    <a href="{% url 'login' %}">Ingresar</a>    
+    <a href="{% url 'login' %}">Ingresar</a>   </p></p>
+    
 
+    <body>
+        <center><img src="postit.jpg" /></center>
+
+    </body>
 {% endif %}  
 
 {% endblock %}
+</html>

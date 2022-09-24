@@ -21,6 +21,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def home(request):
     return render(request, 'app_tareas/home.html') 
 
+def about(request):
+    return render(request, 'app_tareas/about/about.html')
+         
+
+
 ## ------------ VISTAS REGISTRACION ---------------
 
 def registro(request):

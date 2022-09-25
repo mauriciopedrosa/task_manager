@@ -51,9 +51,9 @@
                                 {% comment %} <td>{{i.descripcion}}</td>                                 {% endcomment %}
                                 <td>{{i.categoria}}</td>
                                 {% if i.completo %}
-                                <td><p class="btn btn-success btn-sm">{{i.completo}}</p></td>
+                                <td><p class="btn btn-success btn-sm">Realizado</p></td>
                                 {% else %}
-                                <td><p class="btn btn-danger btn-sm">{{i.completo}}</p></td>
+                                <td><p class="btn btn-danger btn-sm">Pendiente</p></td>
                                 {% endif %}
                                 <td><a href="{% url 'tarea' i.id %}" class="btn btn-info btn-sm">Detalle</a>
                                 <a href="{% url 'editar_tarea' i.id %}" class="btn btn-warning btn-sm">Editar</a>

@@ -4,19 +4,19 @@
 
 {% block contenido %}
 
-{% if request.user.is_authenticated %}
+
     <p>{{request.user}}</p>
     <a href="{% url 'logout' %}">Salir</a>
 
-{% else %}
+
     <a href="{% url 'login' %}">Ingresar</a>   </p></p>
     
 
     <body>
-        <center><img src="postit.jpg" /></center>
+        <center><img src="./postit.jpg" /></center>
 
     </body>
-{% endif %}  
+ 
 
 {% endblock %}
 </html>

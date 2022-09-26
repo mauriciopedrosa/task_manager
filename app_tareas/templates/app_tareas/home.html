@@ -4,20 +4,20 @@
 
 {% block contenido %}
 
-{% if request.user.is_authenticated %}
+
     <p>{{request.user}}</p>
     <a href="{% url 'logout' %}">Salir</a>
 
-{% else %}
+
     <a href="{% url 'login' %}">Ingresar</a>   </p></p>
     
-
+    
     <body>
         
         <center><img src="https://us.123rf.com/450wm/rawpixel/rawpixel1409/rawpixel140900999/31300598-hombres-de-negocios-con-engranajes-y-trabajo-en-equipo-concepto.jpg?ver=6" /></center>
 
     </body>
-{% endif %}  
+ 
 
 {% endblock %}
 </html>

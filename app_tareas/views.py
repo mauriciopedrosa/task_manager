@@ -170,3 +170,10 @@ class EliminarCategoria(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('categorias')      
     template_name = 'app_tareas/categorias/eliminar_categoria.html'        
         
+# ---------------- vista USERS ---------------
+class ListaUsuarios(LoginRequiredMixin,ListView):
+    
+    model = User
+    context_object_name = 'usuarios'   
+    template_name = 'app_tareas/usuarios/lista_usuarios.html'       
+    

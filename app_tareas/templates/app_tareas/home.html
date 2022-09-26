@@ -1,14 +1,22 @@
+<!DOCTYPE html>
+<html>
 {% extends 'app_tareas/plantilla_base.html' %}
 
 {% block contenido %}
 
-{% if request.user.is_authenticated %}
+
     <p>{{request.user}}</p>
     <a href="{% url 'logout' %}">Salir</a>
 
-{% else %}
-    <a href="{% url 'login' %}">Ingresar</a>    
 
-{% endif %}  
+    <a href="{% url 'login' %}">Ingresar</a>   </p></p>
+    
+    
+    <body>
+        <center><img src="/task_manager/app_tareas/static/app_tareas/assets/img/postit.jpg" /></center>
+
+    </body>
+ 
 
 {% endblock %}
+</html>

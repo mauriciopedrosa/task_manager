@@ -1,5 +1,9 @@
 from django.urls import path
+
 from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea
+from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
+from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
+
 from django.contrib.auth.views import LogoutView
 
 
@@ -7,7 +11,8 @@ urlpatterns = [
     path('', home, name ='home'), 
     path('login/', Logueo.as_view(), name ='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name ='logout'),   
-    path('registro/', registro, name ='registro'),      
+    path('registro/', registro, name ='registro'),   
+    path('about/', about, name ='about'),   
     # --------- TAREAS ------------
     path('tareas/', ListaTareas.as_view(), name ='tareas'),
     path('tarea/<int:pk>', DetalleTarea.as_view(), name ='tarea'),
@@ -27,6 +32,7 @@ urlpatterns = [
     path('categoria/<int:pk>', DetalleCategoria.as_view(), name ='categoria'),           
     path('crear_categoria/', CrearCategoria.as_view(), name ='crear_categoria'),
     path('editar_categoria/<int:pk>', EditarCategoria.as_view(), name ='editar_categoria'),
-    path('eliminar_categoria/<int:pk>', EliminarCategoria.as_view(), name ='eliminar_categoria'),     
+    path('eliminar_categoria/<int:pk>', EliminarCategoria.as_view(), name ='eliminar_categoria'),  
+       
  
 ]

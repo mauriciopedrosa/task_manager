@@ -22,6 +22,11 @@ from django.contrib.auth.models import User
 def home(request):
     return render(request, 'app_tareas/home.html') 
 
+def about(request):
+    return render(request, 'app_tareas/about/about.html')
+         
+
+
 ## ------------ VISTAS REGISTRACION ---------------
 
 def registro(request):

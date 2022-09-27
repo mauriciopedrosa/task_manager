@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
+from .views import EditarUsuario, ListaUsuarios, home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
 from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
 from django.contrib.auth.views import LogoutView
 
@@ -30,6 +30,8 @@ urlpatterns = [
     path('crear_categoria/', CrearCategoria.as_view(), name ='crear_categoria'),
     path('editar_categoria/<int:pk>', EditarCategoria.as_view(), name ='editar_categoria'),
     path('eliminar_categoria/<int:pk>', EliminarCategoria.as_view(), name ='eliminar_categoria'),  
-       
- 
+    
+    # -----------USUARIOS ---------------
+    path('usuarios/', ListaUsuarios.as_view(), name ='usuarios'),        
+    path('editar_usuario/<int:pk>', EditarUsuario.as_view(), name ='editar_usuario'),
 ]

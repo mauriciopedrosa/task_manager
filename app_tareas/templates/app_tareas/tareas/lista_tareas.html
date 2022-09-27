@@ -41,7 +41,6 @@
                                 <td>{{i.titulo}}</td> <!--  TR Table DATA -->
                                 <td>{{i.creado|date:"d/m/y"}}</td>
                                 <td><a href="{% url 'tarea_usuario' i.usuario_id %}" class="btn btn-success btn-sm">{{i.usuario}}</a></td>
-                                {% comment %} <td>{{i.descripcion}}</td>                                 {% endcomment %}
                                 <td>{{i.categoria}}</td>
 
                                 <td><a href="{% url 'tarea' i.id %}" class="btn btn-info btn-sm">Detalle</a>

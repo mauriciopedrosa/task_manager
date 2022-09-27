@@ -26,6 +26,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'categorias' %}">CATEGORIAS</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'tareas' %}">TAREAS</a></li>
                         {% if user.is_authenticated %}
+
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                               {{ user.username }}
@@ -34,6 +35,17 @@
                               <li><a class="dropdown-item" href="{% url 'logout' %}"><strong>Cerrar Sesión</strong></a></li>
                             </ul>
                           </div>
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ user.username }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{% url 'editar_usuario' user.id  %}"><strong>Editar Usuario</strong></a></li>                                    
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}"><strong>Cerrar Sesión</strong></a></li>
+                                </ul>
+                            </div>
+
                         {% else %}
                         <li class="nav-item"><a class="btn btn-success btn-sm" style="margin: 5px;" href="{% url 'login' %}">INICIAR SESION</a></li>                        
                         <li class="nav-item"><a class="btn btn-primary btn-sm"  style="margin: 5px;" href="{% url 'registro' %}">REGISTRARSE</a></li>

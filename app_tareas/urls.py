@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ListaUsuarios, home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
+from .views import EditarUsuario, ListaUsuarios, home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
 from .views import home, CrearCategoria, CrearOperador, DetalleCategoria, DetalleOperador, EditarCategoria, EditarOperador, EliminarCategoria, EliminarOperador, ListaCategorias, ListaOperadores,  ListaTareas,DetalleTarea,CrearTarea,EditarTarea, EliminarTarea, Logueo, registro, tarea, about
 from django.contrib.auth.views import LogoutView
 
@@ -33,5 +33,5 @@ urlpatterns = [
     
     # -----------USUARIOS ---------------
     path('usuarios/', ListaUsuarios.as_view(), name ='usuarios'),        
- 
+    path('editar_usuario/<int:pk>', EditarUsuario.as_view(), name ='editar_usuario'),
 ]
